@@ -18,7 +18,7 @@
     "@repo/supabase": "workspace:*",
     "@repo/theme": "workspace:*",
     "@repo/validation": "workspace:*",
-    "@supabase/ssr": "^0.7.0",
+    "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.76.0",
     "ai": "^6.0.0",
     "class-variance-authority": "^0.7.1",
