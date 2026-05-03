@@ -18,14 +18,16 @@
   "homepage": "https://github.com/Eldergenix/enterprise-monorepo-template",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Eldergenix/enterprise-monorepo-template.git"
+    "url": "git+https://github.com/Eldergenix/enterprise-monorepo-template.git"
   },
   "license": "MIT",
   "type": "module",
   "bin": {
-    "create-enterprise-monorepo": "./dist/index.js"
+    "create-enterprise-monorepo": "dist/index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
