@@ -1,0 +1,28 @@
+# Example managed requirements for enterprise administrators.
+# Copy to the managed Codex requirements location for your organization.
+
+allowed_approval_policies = ["on-request", "granular"]
+allowed_sandbox_modes = ["read-only", "workspace-write"]
+allowed_web_search_modes = ["disabled", "cached"]
+
+[features]
+codex_hooks = true
+browser_use = false
+computer_use = false
+in_app_browser = false
+
+[permissions.filesystem]
+deny_read = [
+  "**/.env",
+  "**/.env.*",
+  "**/*.pem",
+  "**/*.key",
+  "**/*.p8",
+  "**/*.p12"
+]
+
+[mcp_servers.notion.identity]
+url = "https://mcp.notion.com/mcp"
+
+[mcp_servers.linear.identity]
+url = "https://mcp.linear.app/mcp"

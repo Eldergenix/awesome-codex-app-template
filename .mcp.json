@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "notion": {
+      "url": "https://mcp.notion.com/mcp"
+    },
+    "linear": {
+      "url": "https://mcp.linear.app/mcp"
+    },
+    "repo-fastmcp": {
+      "command": "uv",
+      "args": ["--directory", "apps/mcp", "run", "python", "server.py"],
+      "env": {}
+    }
+  }
+}

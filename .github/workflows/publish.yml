@@ -1,0 +1,36 @@
+name: Publish create package
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+  id-token: write  # for npm provenance
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Enable pnpm
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --filter create-enterprise-monorepo --no-frozen-lockfile
+
+      - name: Build CLI
+        run: pnpm --filter create-enterprise-monorepo build
+
+      - name: Publish to npm
+        run: pnpm --filter create-enterprise-monorepo publish --no-git-checks --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+set -eu
+python3 scripts/quality/agent_gate.py --changed-only

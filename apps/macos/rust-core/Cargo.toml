@@ -1,0 +1,10 @@
+[package]
+name = "enterprise_rust_core"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "enterprise_rust_core"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[dependencies]

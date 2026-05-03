@@ -1,0 +1,12 @@
+title = "Enterprise monorepo secret scanning policy"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Template placeholders"
+regexes = [
+  "your_api_key_here",
+  "<yourtoken>",
+  "<set-in-secret-manager>"
+]

@@ -1,0 +1,8 @@
+name: Progress
+properties:
+  Task: title
+  Status: select[Not Started, In Progress, Blocked, In Review, Done]
+  LinearIssue: url
+  NotionDoc: relation[Documentation]
+  Verification: rich_text
+  Updated: date

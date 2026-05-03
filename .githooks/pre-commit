@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+set -eu
+python3 scripts/quality/secret_scan.py --staged
+python3 scripts/quality/loc_guard.py --staged
+python3 scripts/quality/style_guard.py --staged

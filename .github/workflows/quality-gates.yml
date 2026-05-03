@@ -1,0 +1,80 @@
+name: Quality Gates
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  deterministic:
+    name: Deterministic quality gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Enable pnpm
+        run: corepack enable
+      - name: Install JS dependencies
+        run: pnpm install --no-frozen-lockfile
+      - name: Run deterministic gates
+        run: pnpm quality
+      - name: Typecheck workspace
+        run: pnpm typecheck
+      - name: Lint workspace
+        run: pnpm lint
+      - name: Test workspace
+        run: pnpm test
+
+  python-services:
+    name: Python service checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: API tests
+        run: cd apps/api && uv sync && uv run pytest
+      - name: MCP smoke
+        run: cd apps/mcp && uv sync && uv run python -m pytest
+
+  macos:
+    name: macOS Swift/Rust checks
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rust tests
+        run: cd apps/macos/rust-core && cargo test
+      - name: Swift build
+        run: cd apps/macos && swift build
+
+  optional-ai-qc:
+    name: Optional AI QC review
+    runs-on: ubuntu-latest
+    if: ${{ vars.AI_QC_ENABLED == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: AI QC review
+        env:
+          AI_QC_PROVIDER: ${{ vars.AI_QC_PROVIDER }}
+          AI_QC_MODEL: ${{ vars.AI_QC_MODEL }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python3 scripts/ai-review/qc_review.py --ci

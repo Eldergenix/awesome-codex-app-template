@@ -1,0 +1,50 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+
+# Repo-scoped Codex defaults. User-level ~/.codex/config.toml may override these.
+model = "gpt-5.1-codex"
+review_model = "gpt-5.5-pro"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "cached"
+project_root_markers = [".git", "pnpm-workspace.yaml"]
+project_doc_fallback_filenames = ["AGENTS.md"]
+project_doc_max_bytes = 65536
+
+[features]
+codex_hooks = true
+experimental_use_rmcp_client = true
+
+[sandbox_workspace_write]
+network_access = false
+exclude_slash_tmp = true
+exclude_tmpdir_env_var = true
+
+[shell_environment_policy]
+exclude = [
+  "*KEY*",
+  "*TOKEN*",
+  "*SECRET*",
+  "*PASSWORD*",
+  "SUPABASE_SERVICE_ROLE_KEY",
+  "OPENAI_API_KEY",
+  "ANTHROPIC_API_KEY",
+  "LINEAR_API_KEY",
+  "NOTION_TOKEN"
+]
+
+[mcp_servers.notion]
+url = "https://mcp.notion.com/mcp"
+startup_timeout_sec = 10
+tool_timeout_sec = 60
+
+[mcp_servers.linear]
+url = "https://mcp.linear.app/mcp"
+startup_timeout_sec = 10
+tool_timeout_sec = 60
+
+[mcp_servers.repo_fastmcp]
+command = "uv"
+args = ["--directory", "apps/mcp", "run", "python", "server.py"]
+enabled = false
+startup_timeout_sec = 15
+tool_timeout_sec = 60

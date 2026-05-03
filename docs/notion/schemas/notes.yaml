@@ -1,0 +1,7 @@
+name: Notes
+properties:
+  Title: title
+  Kind: select[Decision, Investigation, Meeting, Retrospective]
+  RelatedIssue: url
+  Tags: multi_select
+  Created: date

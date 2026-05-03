@@ -1,0 +1,16 @@
+[project]
+name = "enterprise-repo-mcp"
+version = "0.1.0"
+description = "FastMCP server for repo-local enterprise agent workflows"
+requires-python = ">=3.12"
+dependencies = [
+  "fastmcp>=2.0.0",
+  "pydantic>=2.10.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3.0"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

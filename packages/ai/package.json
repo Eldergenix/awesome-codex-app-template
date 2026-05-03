@@ -1,0 +1,19 @@
+{
+  "name": "@repo/ai",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "echo 'No AI package tests yet'"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^3.0.0",
+    "ai": "^6.0.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": { "typescript": "^5.9.0" }
+}

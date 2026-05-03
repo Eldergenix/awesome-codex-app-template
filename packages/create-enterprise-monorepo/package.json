@@ -1,0 +1,48 @@
+{
+  "name": "create-enterprise-monorepo",
+  "version": "1.0.0",
+  "description": "Bootstrap an enterprise-grade multi-app monorepo (Next.js · Expo · macOS · FastAPI · MCP · AI SDK · Supabase) in seconds",
+  "keywords": [
+    "monorepo",
+    "nextjs",
+    "expo",
+    "supabase",
+    "typescript",
+    "template",
+    "turborepo",
+    "fastapi",
+    "ai-sdk",
+    "create",
+    "scaffold"
+  ],
+  "homepage": "https://github.com/YOUR_ORG/enterprise-monorepo-template",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_ORG/enterprise-monorepo-template.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "create-enterprise-monorepo": "./dist/index.js"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "degit": "^2.8.4",
+    "kleur": "^4.1.5",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/degit": "^2.8.6",
+    "@types/node": "^22.0.0",
+    "@types/prompts": "^2.4.9",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

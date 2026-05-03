@@ -1,0 +1,14 @@
+{
+  "name": "@repo/types",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "echo 'No type tests yet'"
+  },
+  "devDependencies": { "typescript": "^5.9.0" }
+}

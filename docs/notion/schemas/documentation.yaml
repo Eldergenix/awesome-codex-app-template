@@ -1,0 +1,9 @@
+name: Documentation
+properties:
+  Title: title
+  Type: select[Architecture, PRD, API, Runbook, ADR]
+  Owner: people
+  Status: select[Draft, Review, Approved, Archived]
+  Apps: multi_select[web, mobile, macos, api, mcp]
+  LinearIssue: url
+  LastReviewed: date

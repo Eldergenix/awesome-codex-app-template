@@ -1,0 +1,13 @@
+{
+  "web": {
+    "aiRoutesMustStream": true,
+    "forbidServerAiProviderInClientComponents": true
+  },
+  "api": {
+    "forbidBlockingCallsInAsyncRoutes": true
+  },
+  "mcp": {
+    "toolOutputMaxChars": 4000,
+    "subprocessTimeoutRequired": true
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "baseUrl": ".",
+    "paths": {
+      "@repo/ai": ["packages/ai/src/index.ts"],
+      "@repo/supabase": ["packages/supabase/src/index.ts"],
+      "@repo/theme": ["packages/theme/src/index.ts"],
+      "@repo/types": ["packages/types/src/index.ts"],
+      "@repo/validation": ["packages/validation/src/index.ts"]
+    }
+  }
+}

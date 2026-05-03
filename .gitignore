@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# JavaScript builds
+.next/
+out/
+dist/
+build/
+coverage/
+.turbo/
+.expo/
+expo-env.d.ts
+
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+
+# Rust / Swift
+target/
+.build/
+DerivedData/
+xcuserdata/
+
+# Local env and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p8
+*.p12
+*.mobileprovision
+
+# Agent state and audit output
+.agent-state/
+.agents/state/*
+!.agents/state/README.md
+.agents/audit/*
+!.agents/audit/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db

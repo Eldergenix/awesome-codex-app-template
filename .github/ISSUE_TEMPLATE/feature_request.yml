@@ -1,0 +1,62 @@
+name: Feature Request
+description: Propose a new feature or improvement to the template
+title: "[feat]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before submitting, search existing issues to avoid duplicates.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Setup wizard
+        - Agent skills / AGENTS.md
+        - apps/web (Next.js)
+        - apps/mobile (Expo)
+        - apps/macos (SwiftUI)
+        - apps/api (FastAPI)
+        - apps/mcp (FastMCP)
+        - CI / GitHub Actions
+        - Design system / DESIGN.md
+        - create-enterprise-monorepo CLI
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What problem does this solve? Be specific.
+      placeholder: "When I try to X, I can't do Y because..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How would you solve it? Include code snippets if relevant.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What other approaches did you consider?
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and this is not a duplicate
+          required: true
+        - label: This is a template-level concern (not a question about Next.js/Expo/etc.)
+          required: true
