@@ -6,7 +6,7 @@ import kleur from "kleur";
 import prompts from "prompts";
 import degit from "degit";
 
-const REPO = "YOUR_ORG/enterprise-monorepo-template";
+const REPO = "Eldergenix/enterprise-monorepo-template";
 const VERSION = "1.0.0";
 
 function log(msg: string) {

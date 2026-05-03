@@ -40,7 +40,7 @@ Be respectful and constructive. Harassment of any kind is not tolerated.
 ### Setup
 
 ```bash
-git clone https://github.com/YOUR_ORG/enterprise-monorepo-template
+git clone https://github.com/Eldergenix/enterprise-monorepo-template
 cd enterprise-monorepo-template
 corepack enable
 pnpm install

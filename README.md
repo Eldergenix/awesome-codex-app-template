@@ -4,15 +4,15 @@
   <p><strong>Production-grade scaffold for multi-platform products.</strong><br>Next.js · Expo · macOS · FastAPI · MCP · AI SDK · Supabase — configured by a setup wizard in your browser.</p>
 
   <p>
-    <a href="https://github.com/YOUR_ORG/enterprise-monorepo-template/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" /></a>
-    <a href="https://github.com/YOUR_ORG/enterprise-monorepo-template/actions/workflows/quality-gates.yml"><img src="https://github.com/YOUR_ORG/enterprise-monorepo-template/actions/workflows/quality-gates.yml/badge.svg" alt="Quality Gates" /></a>
+    <a href="https://github.com/Eldergenix/enterprise-monorepo-template/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" /></a>
+    <a href="https://github.com/Eldergenix/enterprise-monorepo-template/actions/workflows/quality-gates.yml"><img src="https://github.com/Eldergenix/enterprise-monorepo-template/actions/workflows/quality-gates.yml/badge.svg" alt="Quality Gates" /></a>
     <a href="https://www.npmjs.com/package/create-enterprise-monorepo"><img src="https://img.shields.io/npm/v/create-enterprise-monorepo.svg" alt="npm" /></a>
     <img src="https://img.shields.io/badge/Node-22-339933?logo=node.js&logoColor=white" alt="Node 22" />
     <img src="https://img.shields.io/badge/pnpm-10-F69220?logo=pnpm&logoColor=white" alt="pnpm" />
   </p>
 
   <p>
-    <a href="https://vercel.com/new/clone?repository-url=https://github.com/YOUR_ORG/enterprise-monorepo-template&root=apps/web">
+    <a href="https://vercel.com/new/clone?repository-url=https://github.com/Eldergenix/enterprise-monorepo-template&root=apps/web">
       <img src="https://vercel.com/button" alt="Deploy with Vercel" height="32" />
     </a>
   </p>
@@ -88,7 +88,7 @@ pnpm --filter @repo/web dev
 
 **Manual:**
 ```bash
-git clone https://github.com/YOUR_ORG/enterprise-monorepo-template my-app
+git clone https://github.com/Eldergenix/enterprise-monorepo-template my-app
 cd my-app
 corepack enable
 pnpm install
