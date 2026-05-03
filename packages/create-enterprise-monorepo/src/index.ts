@@ -7,7 +7,7 @@ import prompts from "prompts";
 import degit from "degit";
 
 const REPO = "Eldergenix/enterprise-monorepo-template";
-const VERSION = "1.0.1";
+const VERSION = "1.0.2";
 
 function log(msg: string) {
   process.stdout.write(msg + "\n");

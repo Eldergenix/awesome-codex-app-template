@@ -21,16 +21,15 @@ jobs:
           node-version: "22"
           registry-url: "https://registry.npmjs.org"
 
-      - name: Enable pnpm
-        run: corepack enable
-
-      - name: Install dependencies
-        run: pnpm install --filter create-enterprise-monorepo --no-frozen-lockfile
-
-      - name: Build CLI
-        run: pnpm --filter create-enterprise-monorepo build
+      - name: Install dependencies and Build
+        run: |
+          cd packages/create-enterprise-monorepo
+          npm install
+          npm run build
 
       - name: Publish to npm
-        run: pnpm --filter create-enterprise-monorepo publish --no-git-checks --access public
+        run: |
+          cd packages/create-enterprise-monorepo
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

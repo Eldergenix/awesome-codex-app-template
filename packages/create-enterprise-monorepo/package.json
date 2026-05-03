@@ -1,6 +1,6 @@
 {
   "name": "create-enterprise-monorepo",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Bootstrap an enterprise-grade multi-app monorepo (Next.js · Expo · macOS · FastAPI · MCP · AI SDK · Supabase) in seconds",
   "keywords": [
     "monorepo",
