@@ -1,7 +1,7 @@
 "use client";
 
 import { SelectionCard } from "../SelectionCard";
-import type { LayoutStyle, Selections } from "../types";
+import { COLORS, type LayoutStyle, type Selections } from "../types";
 
 const LAYOUTS: { id: LayoutStyle; label: string; description: string; icon: React.ReactNode }[] = [
   {
@@ -56,12 +56,12 @@ interface Props {
 export function Step2Layout({ selections, onChange }: Props) {
   return (
     <div>
-      <p style={{ fontSize: "12px", fontWeight: 500, letterSpacing: "0.4px", textTransform: "uppercase", color: "#5e6ad2", marginBottom: "8px" }}>Step 2 of 5</p>
-      <h2 style={{ fontSize: "28px", fontWeight: 600, letterSpacing: "-0.6px", lineHeight: 1.2, color: "#f7f8f8", margin: 0 }}>What's the primary layout?</h2>
-      <p style={{ fontSize: "14px", color: "#8a8f98", marginTop: "8px", marginBottom: "28px", lineHeight: 1.6 }}>
+      <p style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.4px", textTransform: "uppercase", color: COLORS.primary, marginBottom: "4px" }}>Step 2 of 5</p>
+      <h2 style={{ fontSize: "24px", fontWeight: 600, letterSpacing: "-0.6px", lineHeight: 1.2, color: COLORS.ink, margin: 0 }}>What's the primary layout?</h2>
+      <p style={{ fontSize: "13px", color: COLORS.inkSubtle, marginTop: "8px", marginBottom: "16px", lineHeight: 1.6 }}>
         Determines which template scaffold and navigation pattern gets installed.
       </p>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "10px" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
         {LAYOUTS.map((layout) => (
           <SelectionCard
             key={layout.id}

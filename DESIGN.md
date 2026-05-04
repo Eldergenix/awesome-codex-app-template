@@ -1,5 +1,7 @@
 # DESIGN.md
 
+<!-- Design-system contract -->
+
 ## Overview
 
 Linear's marketing canvas is the deepest dark surface in this collection — `{colors.canvas}` is #010102, essentially pure black with a faint blue tint. On top sits a four-step surface ladder (`{colors.surface-1}` through `{colors.surface-4}`) for cards, panels, and lifted tiles, with hairline borders running from `{colors.hairline}` (#23252a) up through `{colors.hairline-strong}` and `{colors.hairline-tertiary}`. Light gray text (`{colors.ink}` #f7f8f8) carries the body and headlines.
@@ -19,6 +21,7 @@ The page rhythm is **dense product screenshots** — Linear's marketing leads wi
 - **Product UI screenshots** dominate the page. The marketing chrome is a dark frame for the app.
 - No second chromatic color. No atmospheric gradients. No spotlight cards.
 
+<!-- Semantic color roles -->
 ## Colors
 
 > Source pages: linear.app (home), /intake, /pricing, /contact/sales, /build.

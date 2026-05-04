@@ -14,6 +14,18 @@ const nextConfig: NextConfig = {
   typedRoutes: true,
   reactCompiler: true,
   serverExternalPackages: ["@supabase/supabase-js", "child_process", "util"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
   ...(process.env.STATIC_EXPORT === "true" && {
     output: "export",
     assetPrefix,

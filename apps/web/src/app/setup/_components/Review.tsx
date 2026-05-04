@@ -35,6 +35,10 @@ function buildCommandList(s: Selections): { cmd: string; reason: string }[] {
     cmds.push({ cmd: "pnpm dlx shadcn@latest registry add @thegridcn", reason: "Billing / pricing components" });
   }
 
+  if (s.deployment && s.deployment !== "none") {
+    cmds.push({ cmd: `Copy deploy-${s.deployment}.yml template to .github/workflows`, reason: "Configure Deployment Action" });
+  }
+
   cmds.push({ cmd: "✎ Mutate DESIGN.md — write Active Theme Configuration block", reason: "Document chosen theme" });
   cmds.push({ cmd: "✎ Append dated entry to CONTINUITY.MD", reason: "Track setup run" });
 
@@ -57,6 +61,10 @@ const LABEL_MAP: Record<string, string> = {
   modern: "Modern / Fluid",
   cyberpunk: "CyberPunk / Tron",
   custom: "Custom Theme",
+  vercel: "Vercel",
+  railway: "Railway",
+  render: "Render",
+  none: "None / Custom",
 };
 
 interface Props {
@@ -73,31 +81,32 @@ export function Review({ selections, onConfirm, onBack }: Props) {
     { label: "Layout", value: selections.layoutStyle ? LABEL_MAP[selections.layoutStyle] : "—" },
     { label: "Theme", value: selections.theme ? LABEL_MAP[selections.theme] : "—" },
     { label: "Animations", value: selections.animations === true ? "Yes" : selections.animations === false ? "No" : "—" },
-    { label: "Paying Customers", value: selections.payingCustomers === true ? "Yes" : selections.payingCustomers === false ? "No" : "—" },
+    { label: "Customers", value: selections.payingCustomers === true ? "Yes" : selections.payingCustomers === false ? "No" : "—" },
+    { label: "Deployment", value: selections.deployment ? LABEL_MAP[selections.deployment] : "—" },
   ];
 
   return (
     <div>
-      <p style={{ fontSize: "12px", fontWeight: 500, letterSpacing: "0.4px", textTransform: "uppercase", color: COLORS.primary, marginBottom: "8px" }}>Review</p>
-      <h2 style={{ fontSize: "28px", fontWeight: 600, letterSpacing: "-0.6px", lineHeight: 1.2, color: COLORS.ink, margin: 0 }}>Ready to configure</h2>
-      <p style={{ fontSize: "14px", color: COLORS.inkSubtle, marginTop: "8px", marginBottom: "28px", lineHeight: 1.6 }}>
+      <p style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.4px", textTransform: "uppercase", color: COLORS.primary, marginBottom: "4px" }}>Review</p>
+      <h2 style={{ fontSize: "24px", fontWeight: 600, letterSpacing: "-0.6px", lineHeight: 1.2, color: COLORS.ink, margin: 0 }}>Ready to configure</h2>
+      <p style={{ fontSize: "13px", color: COLORS.inkSubtle, marginTop: "8px", marginBottom: "20px", lineHeight: 1.6 }}>
         Review your selections and the commands that will run. This is dev-only and will not execute on deployed builds.
       </p>
 
       {/* Selections summary */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "8px", marginBottom: "24px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "8px", marginBottom: "20px" }}>
         {summaryItems.map((item) => (
-          <div key={item.label} style={{ padding: "14px 16px", borderRadius: "10px", background: COLORS.surface1, border: `1px solid ${COLORS.hairline}` }}>
-            <div style={{ fontSize: "11px", color: COLORS.inkTertiary, textTransform: "uppercase", letterSpacing: "0.4px", marginBottom: "6px" }}>{item.label}</div>
+          <div key={item.label} style={{ padding: "10px 12px", borderRadius: "10px", background: COLORS.surface1, border: `1px solid ${COLORS.hairline}` }}>
+            <div style={{ fontSize: "10px", color: COLORS.inkTertiary, textTransform: "uppercase", letterSpacing: "0.4px", marginBottom: "6px" }}>{item.label}</div>
             <div style={{ fontSize: "13px", fontWeight: 500, color: COLORS.ink }}>{item.value}</div>
           </div>
         ))}
       </div>
 
       {/* Commands list */}
-      <div style={{ borderRadius: "10px", border: `1px solid ${COLORS.hairline}`, overflow: "hidden", marginBottom: "28px" }}>
-        <div style={{ padding: "12px 16px", borderBottom: `1px solid ${COLORS.hairline}`, background: COLORS.surface1 }}>
-          <span style={{ fontSize: "12px", fontWeight: 500, color: COLORS.inkMuted }}>Commands to execute</span>
+      <div style={{ borderRadius: "10px", border: `1px solid ${COLORS.hairline}`, overflow: "hidden", marginBottom: "20px" }}>
+        <div style={{ padding: "10px 12px", borderBottom: `1px solid ${COLORS.hairline}`, background: COLORS.surface1 }}>
+          <span style={{ fontSize: "10px", fontWeight: 500, color: COLORS.inkMuted }}>Commands to execute</span>
         </div>
         {commands.map((item, i) => (
           <div
@@ -112,8 +121,8 @@ export function Review({ selections, onConfirm, onBack }: Props) {
               background: "transparent",
             }}
           >
-            <code style={{ fontSize: "11px", color: COLORS.inkMuted, fontFamily: "ui-monospace, monospace" }}>{item.cmd}</code>
-            <span style={{ fontSize: "11px", color: COLORS.inkTertiary, whiteSpace: "nowrap" }}>{item.reason}</span>
+            <code style={{ fontSize: "10px", color: COLORS.inkMuted, fontFamily: "ui-monospace, monospace" }}>{item.cmd}</code>
+            <span style={{ fontSize: "10px", color: COLORS.inkTertiary, whiteSpace: "nowrap" }}>{item.reason}</span>
           </div>
         ))}
       </div>
@@ -122,14 +131,14 @@ export function Review({ selections, onConfirm, onBack }: Props) {
         <button
           id="review-back"
           onClick={onBack}
-          style={{ padding: "10px 20px", borderRadius: "8px", border: `1px solid ${COLORS.hairline}`, background: "transparent", color: COLORS.inkMuted, fontSize: "14px", fontWeight: 500, cursor: "pointer", transition: "all 0.15s ease" }}
+          style={{ padding: "10px 20px", borderRadius: "8px", border: `1px solid ${COLORS.hairline}`, background: "transparent", color: COLORS.inkMuted, fontSize: "13px", fontWeight: 500, cursor: "pointer", transition: "all 0.15s ease" }}
         >
           ← Back
         </button>
         <button
           id="review-confirm"
           onClick={onConfirm}
-          style={{ flex: 1, padding: "12px 24px", borderRadius: "8px", border: "none", background: COLORS.primary, color: "#fff", fontSize: "14px", fontWeight: 600, cursor: "pointer", letterSpacing: "-0.1px", transition: "all 0.15s ease" }}
+          style={{ flex: 1, padding: "12px 24px", borderRadius: "8px", border: "none", background: COLORS.primary, color: "rgb(255, 255, 255)", fontSize: "13px", fontWeight: 600, cursor: "pointer", letterSpacing: "-0.1px", transition: "all 0.15s ease" }}
           onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = COLORS.primaryHover; }}
           onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = COLORS.primary; }}
         >

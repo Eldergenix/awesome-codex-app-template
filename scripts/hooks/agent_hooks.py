@@ -139,7 +139,7 @@ def assess_tool_use(event: dict[str, Any]) -> str | None:
 def audit(event: dict[str, Any], note: str) -> None:
     AUDIT_DIR.mkdir(parents=True, exist_ok=True)
     entry = {
-        "ts": _dt.datetime.now(_dt.UTC).isoformat(),
+        "ts": _dt.datetime.now(_dt.timezone.utc).isoformat(),
         "event": event.get("hook_event_name"),
         "tool": event.get("tool_name"),
         "cwd": event.get("cwd"),

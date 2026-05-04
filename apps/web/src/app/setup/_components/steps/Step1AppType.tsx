@@ -1,7 +1,7 @@
 "use client";
 
 import { SelectionCard } from "../SelectionCard";
-import type { AppType, Selections } from "../types";
+import { COLORS, type AppType, type Selections } from "../types";
 
 const APP_TYPES: { id: AppType; label: string; description: string; icon: React.ReactNode }[] = [
   {
@@ -76,12 +76,12 @@ interface Props {
 export function Step1AppType({ selections, onChange }: Props) {
   return (
     <div>
-      <p style={{ fontSize: "12px", fontWeight: 500, letterSpacing: "0.4px", textTransform: "uppercase", color: "#5e6ad2", marginBottom: "8px" }}>Step 1 of 5</p>
-      <h2 style={{ fontSize: "28px", fontWeight: 600, letterSpacing: "-0.6px", lineHeight: 1.2, color: "#f7f8f8", margin: 0 }}>What are you building?</h2>
-      <p style={{ fontSize: "14px", color: "#8a8f98", marginTop: "8px", marginBottom: "28px", lineHeight: 1.6 }}>
+      <p style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.4px", textTransform: "uppercase", color: COLORS.primary, marginBottom: "4px" }}>Step 1 of 5</p>
+      <h2 style={{ fontSize: "24px", fontWeight: 600, letterSpacing: "-0.6px", lineHeight: 1.2, color: COLORS.ink, margin: 0 }}>What are you building?</h2>
+      <p style={{ fontSize: "13px", color: COLORS.inkSubtle, marginTop: "8px", marginBottom: "16px", lineHeight: 1.6 }}>
         Choose your primary platform. This determines which agent skills and AGENTS.md rules are activated.
       </p>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "10px" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
         {APP_TYPES.map((type) => (
           <SelectionCard
             key={type.id}

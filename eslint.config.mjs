@@ -1,7 +1,6 @@
 import js from "@eslint/js";
 
 export default [
-  js.configs.recommended,
   {
     ignores: [
       "**/.next/**",
@@ -10,7 +9,10 @@ export default [
       "**/build/**",
       "**/.expo/**",
       "**/coverage/**"
-    ],
+    ]
+  },
+  js.configs.recommended,
+  {
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module"

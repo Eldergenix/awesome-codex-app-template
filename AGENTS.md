@@ -31,6 +31,7 @@ Every directive below serves one of these phases.
 
 ---
 
+<!-- Required reading order -->
 ## <required_reading_order>Required Reading Order</required_reading_order>
 
 Before editing code, read:
@@ -108,6 +109,7 @@ For every non-trivial task:
 
 ---
 
+<!-- Definition of done -->
 ## <definition_of_done>Definition of Done</definition_of_done>
 
 A task is not complete until:

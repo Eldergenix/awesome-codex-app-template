@@ -17,6 +17,7 @@ interface SetupSelections {
   theme: string;
   animations: boolean;
   payingCustomers: boolean;
+  deployment: string;
 }
 
 type EventType = "step" | "output" | "success" | "error" | "done";
@@ -83,13 +84,23 @@ function buildPlan(s: SetupSelections): Array<{ label: string; commands: { cmd: 
     });
   }
 
-  // 5. Mutate DESIGN.md
+  // 5. Deployment configuration
+  if (s.deployment && s.deployment !== "none") {
+    plan.push({
+      label: `Configure ${s.deployment} deployment action`,
+      commands: [
+        { cmd: `cp .github/workflow-templates/deploy-${s.deployment}.yml .github/workflows/deploy-services.yml`, cwd: REPO_ROOT },
+      ],
+    });
+  }
+
+  // 6. Mutate DESIGN.md
   plan.push({
     label: "Update DESIGN.md — write Active Theme Configuration block",
     commands: [], // handled separately via file mutation
   });
 
-  // 6. Update CONTINUITY.MD
+  // 7. Update CONTINUITY.MD
   plan.push({
     label: "Append dated entry to CONTINUITY.MD",
     commands: [], // handled separately via file mutation
@@ -116,6 +127,7 @@ function mutateDesignMd(s: SetupSelections) {
 | Theme | \`${s.theme}\` |
 | Animations | \`${s.animations ? "yes" : "no"}\` |
 | Paying Customers | \`${s.payingCustomers ? "yes" : "no"}\` |
+| Deployment | \`${s.deployment}\` |
 
 ### Installed Packages
 ${s.theme === "modern" ? "- `@fluid` — Modern / Fluid shadcn registry\n" : ""}${s.theme === "cyberpunk" || s.payingCustomers ? "- `@thegridcn` — CyberPunk / Tron + billing components\n" : ""}${s.animations ? "- `@animate-ui/primitives-texts-sliding-number` — Sliding number text primitives\n- `motion` — Framer Motion v11\n" : ""}${s.theme === "custom" ? "- No registry installed — custom theme setup required\n" : ""}
@@ -137,7 +149,7 @@ function mutateContinuityMd(s: SetupSelections) {
   const entry = `
 ## Setup Wizard Run — ${new Date().toISOString()}
 
-**Selections:** App \`${s.appType}\` | Layout \`${s.layoutStyle}\` | Theme \`${s.theme}\` | Animations: ${s.animations} | Paying Customers: ${s.payingCustomers}
+**Selections:** App \`${s.appType}\` | Layout \`${s.layoutStyle}\` | Theme \`${s.theme}\` | Animations: ${s.animations} | Paying Customers: ${s.payingCustomers} | Deployment: ${s.deployment}
 
 **Installed:**
 ${s.theme === "modern" ? "- @fluid registry\n" : ""}${s.theme === "cyberpunk" || s.payingCustomers ? "- @thegridcn registry\n" : ""}${s.animations ? "- @animate-ui/primitives-texts-sliding-number + motion\n" : ""}

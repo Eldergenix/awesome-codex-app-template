@@ -1,7 +1,6 @@
 "use client";
 
-import { COLORS } from "../types";
-import type { Theme, Selections } from "../types";
+import { COLORS, type Theme, type Selections } from "../types";
 
 const THEMES: {
   id: Theme;
@@ -19,7 +18,7 @@ const THEMES: {
     description: "Smooth gradients, fluid motion, translucent surfaces. Inspired by Linear and Vercel.",
     command: "npx shadcn@latest registry add @fluid",
     badge: "Popular",
-    previewColors: ["#5e6ad2", "#8b96ff", "#3b4abd", "#c7ccff"],
+    previewColors: [COLORS.primary, "rgb(139, 150, 255)", "rgb(59, 74, 189)", "rgb(199, 204, 255)"],
   },
   {
     id: "cyberpunk",
@@ -28,7 +27,7 @@ const THEMES: {
     description: "High-contrast neon on deep black. Perfect for developer tools, terminals, and games.",
     command: "pnpm dlx shadcn@latest registry add @thegridcn",
     badge: "From thegridcn.com",
-    previewColors: ["#00fff7", "#ff2d78", "#7b2fff", "#1a1a2e"],
+    previewColors: ["rgb(0, 255, 247)", "rgb(255, 45, 120)", "rgb(123, 47, 255)", "rgb(26, 26, 46)"],
   },
   {
     id: "custom",
@@ -36,7 +35,7 @@ const THEMES: {
     tagline: "Bring your own palette",
     description: "Skip registry installs. DESIGN.md gets a blank template — populate it with your brand tokens.",
     command: "No install — manual DESIGN.md setup",
-    previewColors: ["#8a8f98", "#d0d6e0", "#62666d", "#f7f8f8"],
+    previewColors: [COLORS.inkSubtle, "rgb(208, 214, 224)", COLORS.inkTertiary, COLORS.ink],
   },
 ];
 
@@ -48,9 +47,9 @@ interface Props {
 export function Step3Theme({ selections, onChange }: Props) {
   return (
     <div>
-      <p style={{ fontSize: "12px", fontWeight: 500, letterSpacing: "0.4px", textTransform: "uppercase", color: COLORS.primary, marginBottom: "8px" }}>Step 3 of 5</p>
-      <h2 style={{ fontSize: "28px", fontWeight: 600, letterSpacing: "-0.6px", lineHeight: 1.2, color: COLORS.ink, margin: 0 }}>Choose your visual theme</h2>
-      <p style={{ fontSize: "14px", color: COLORS.inkSubtle, marginTop: "8px", marginBottom: "28px", lineHeight: 1.6 }}>
+      <p style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.4px", textTransform: "uppercase", color: COLORS.primary, marginBottom: "4px" }}>Step 3 of 5</p>
+      <h2 style={{ fontSize: "24px", fontWeight: 600, letterSpacing: "-0.6px", lineHeight: 1.2, color: COLORS.ink, margin: 0 }}>Choose your visual theme</h2>
+      <p style={{ fontSize: "13px", color: COLORS.inkSubtle, marginTop: "8px", marginBottom: "16px", lineHeight: 1.6 }}>
         The shadcn registry for your chosen theme will be installed automatically.
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -62,7 +61,7 @@ export function Step3Theme({ selections, onChange }: Props) {
             style={{
               display: "grid",
               gridTemplateColumns: "1fr auto",
-              gap: "16px",
+              gap: "12px",
               padding: "20px 24px",
               borderRadius: "12px",
               border: `1px solid ${selections.theme === theme.id ? COLORS.primary : COLORS.hairline}`,
@@ -88,7 +87,7 @@ export function Step3Theme({ selections, onChange }: Props) {
           >
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "4px" }}>
-                <span style={{ fontSize: "15px", fontWeight: 600, color: COLORS.ink, letterSpacing: "-0.2px" }}>{theme.label}</span>
+                <span style={{ fontSize: "14px", fontWeight: 600, color: COLORS.ink, letterSpacing: "-0.2px" }}>{theme.label}</span>
                 {theme.badge && (
                   <span style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.4px", textTransform: "uppercase", color: COLORS.primary, background: COLORS.primaryTint, padding: "2px 8px", borderRadius: "9999px", border: `1px solid rgba(94,106,210,0.3)` }}>
                     {theme.badge}
@@ -107,8 +106,8 @@ export function Step3Theme({ selections, onChange }: Props) {
                 ))}
               </div>
               {selections.theme === theme.id && (
-                <span style={{ width: "20px", height: "20px", borderRadius: "50%", background: COLORS.primary, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                <span style={{ width: "18px", height: "18px", borderRadius: "50%", background: COLORS.primary, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="rgb(255, 255, 255)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </span>
               )}
             </div>

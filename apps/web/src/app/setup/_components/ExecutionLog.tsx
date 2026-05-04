@@ -101,11 +101,11 @@ export function ExecutionLog({ selections, onReset }: Props) {
 
   return (
     <div>
-      <p style={{ fontSize: "12px", fontWeight: 500, letterSpacing: "0.4px", textTransform: "uppercase", color: COLORS.primary, marginBottom: "8px" }}>Configuring</p>
-      <h2 style={{ fontSize: "28px", fontWeight: 600, letterSpacing: "-0.6px", lineHeight: 1.2, color: COLORS.ink, margin: 0 }}>
+      <p style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.4px", textTransform: "uppercase", color: COLORS.primary, marginBottom: "4px" }}>Configuring</p>
+      <h2 style={{ fontSize: "24px", fontWeight: 600, letterSpacing: "-0.6px", lineHeight: 1.2, color: COLORS.ink, margin: 0 }}>
         {done ? (hasError ? "Configuration failed" : "Configuration complete") : "Running setup..."}
       </h2>
-      <p style={{ fontSize: "14px", color: COLORS.inkSubtle, marginTop: "8px", marginBottom: "24px", lineHeight: 1.6 }}>
+      <p style={{ fontSize: "13px", color: COLORS.inkSubtle, marginTop: "8px", marginBottom: "20px", lineHeight: 1.6 }}>
         {done
           ? hasError
             ? "Some steps failed. Review the log and check the terminal for details."
@@ -115,12 +115,12 @@ export function ExecutionLog({ selections, onReset }: Props) {
 
       <div
         style={{
-          background: "#0a0a0f",
+          background: "rgb(10, 10, 15)",
           border: `1px solid ${COLORS.hairline}`,
           borderRadius: "10px",
-          padding: "20px",
+          padding: "16px",
           fontFamily: "ui-monospace, SF Mono, Menlo, monospace",
-          fontSize: "12px",
+          fontSize: "10px",
           lineHeight: 1.7,
           minHeight: "280px",
           maxHeight: "400px",
@@ -145,7 +145,7 @@ export function ExecutionLog({ selections, onReset }: Props) {
 
       {done && !hasError && (
         <div style={{ marginTop: "20px", padding: "16px 20px", borderRadius: "10px", background: COLORS.successTint, border: `1px solid rgba(39,166,68,0.25)`, fontSize: "13px", color: COLORS.inkMuted, lineHeight: 1.6 }}>
-          <strong style={{ color: COLORS.success }}>✓ Done.</strong> Check <code style={{ fontFamily: "ui-monospace, monospace", fontSize: "11px", background: "rgba(255,255,255,0.06)", padding: "1px 5px", borderRadius: "3px" }}>DESIGN.md</code> and <code style={{ fontFamily: "ui-monospace, monospace", fontSize: "11px", background: "rgba(255,255,255,0.06)", padding: "1px 5px", borderRadius: "3px" }}>CONTINUITY.MD</code> in the repo root for the updated configuration.
+          <strong style={{ color: COLORS.success }}>✓ Done.</strong> Check <code style={{ fontFamily: "ui-monospace, monospace", fontSize: "10px", background: "rgba(255,255,255,0.06)", padding: "1px 5px", borderRadius: "3px" }}>DESIGN.md</code> and <code style={{ fontFamily: "ui-monospace, monospace", fontSize: "10px", background: "rgba(255,255,255,0.06)", padding: "1px 5px", borderRadius: "3px" }}>CONTINUITY.MD</code> in the repo root for the updated configuration.
         </div>
       )}
 
@@ -154,13 +154,13 @@ export function ExecutionLog({ selections, onReset }: Props) {
           <button
             id="execution-reset"
             onClick={onReset}
-            style={{ padding: "10px 20px", borderRadius: "8px", border: `1px solid ${COLORS.hairline}`, background: "transparent", color: COLORS.inkMuted, fontSize: "14px", fontWeight: 500, cursor: "pointer" }}
+            style={{ padding: "10px 20px", borderRadius: "8px", border: `1px solid ${COLORS.hairline}`, background: "transparent", color: COLORS.inkMuted, fontSize: "13px", fontWeight: 500, cursor: "pointer" }}
           >
             ← Start Over
           </button>
           <a
             href="/"
-            style={{ display: "inline-flex", alignItems: "center", padding: "10px 20px", borderRadius: "8px", background: COLORS.primary, color: "#fff", fontSize: "14px", fontWeight: 600, textDecoration: "none" }}
+            style={{ display: "inline-flex", alignItems: "center", padding: "10px 20px", borderRadius: "8px", background: COLORS.primary, color: "rgb(255, 255, 255)", fontSize: "13px", fontWeight: 600, textDecoration: "none" }}
           >
             Go to App →
           </a>
