@@ -22,5 +22,16 @@ export default [
       "no-var": "error",
       "prefer-const": "error"
     }
+  },
+  {
+    files: ["**/*.config.js"],
+    languageOptions: {
+      sourceType: "commonjs",
+      globals: {
+        __dirname: "readonly",
+        module: "readonly",
+        require: "readonly"
+      }
+    }
   }
 ];
